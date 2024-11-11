@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String   @id @default(uuid())
+  name     String
+  email    String   @unique
+  password String
+  access_log AccessLog[]
+  role     Role     @relation(fields: [role_id], references: [id])
+  role_id  String
+}
+
+model Role {
+  id                String     @id @default(uuid())
+  name              String
+  description       String
+  access_level      Access_level   @unique
+  user             User[]     
+}
+
+model Area {
+  id                String     @id @default(uuid())
+  name              String
+  description       String
+  required_access_level Access_level
+  AccessLog AccessLog[]
+}
+
+model AccessLog {
+  id            String        @id @default(uuid())
+  user_id       String
+  area_id       String
+  user          User          @relation(fields: [user_id], references: [id])
+  area          Area          @relation(fields: [area_id], references: [id])
+  access_time   DateTime
+  access_status Access_status
+
+  @@unique([user_id, area_id])
+}
+
+enum Access_level {
+  L1 // Visitantes
+  L2 // Pacientes
+  L3 // Prof de Manutenção
+  L4 // Prof de Saúde/Laboratório
+  L5 // Prof Administrativos
+  L6 // Prof de Segurança 
+}
+
+enum Access_status {
+  DENIED
+  AUTHORIZED  
+  IN_PROCESS
+}
