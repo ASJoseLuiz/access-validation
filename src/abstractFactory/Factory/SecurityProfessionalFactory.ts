@@ -4,7 +4,7 @@ import { Role, Access_level } from "@prisma/client";
 import { UserService } from "src/user/user.service";
 import { RoleService } from "src/role/role.service";
 import { User } from "../Entities/User";
-import { SecurityProfessional } from "../Entities/SecurityProfessiona";
+import { SecurityProfessional } from "../Entities/SecurityProfessional";
 
 @Injectable()
 export class SecurityProfessionalFactory extends UserAbstractFactory {

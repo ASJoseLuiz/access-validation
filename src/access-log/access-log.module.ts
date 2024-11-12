@@ -1,7 +1,8 @@
-import { Module } from '@nestjs/common';
-import { AccessLogService } from './access-log.service';
+import { Module } from "@nestjs/common";
+import { AccessLogService } from "./access-log.service";
+import { PrismaService } from "src/prisma/prisma.service";
 
 @Module({
-  providers: [AccessLogService]
+  providers: [AccessLogService, PrismaService],
 })
 export class AccessLogModule {}
