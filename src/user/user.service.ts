@@ -55,7 +55,7 @@ export class UserService implements UserServiceInterface {
     role_id: string
   ): Promise<User> {
     try {
-      const verifyUser = await this.prismaService.user.findFirst({
+      const verifyUser = await this.prismaService.user.findUnique({
         where: { email },
       });
 

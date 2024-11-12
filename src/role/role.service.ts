@@ -68,6 +68,11 @@ export class RoleService implements RoleServiceInterface {
         throw new NotFoundException("Este papel não existe");
       }
       await this.prismaService.role.delete({ where: { access_level } });
-    } catch (err) {}
+    } catch (err) {
+      throw new InternalServerErrorException({
+        message: "Erro ao deletar o papel",
+        error: err,
+      });
+    }
   }
 }

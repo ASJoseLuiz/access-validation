@@ -20,7 +20,10 @@ export class AreaService implements AreaServiceInterface {
 
       await this.prismaService.area.delete({ where: { id } });
     } catch (err) {
-      throw new InternalServerErrorException("Erro ao tentar deletar a área");
+      throw new InternalServerErrorException({
+        message: "Erro ao tentar deletar a área",
+        error: err,
+      });
     }
   }
 
@@ -28,7 +31,10 @@ export class AreaService implements AreaServiceInterface {
     try {
       return await this.prismaService.area.findMany();
     } catch (err) {
-      throw new InternalServerErrorException("Erro ao retornar as áreas");
+      throw new InternalServerErrorException({
+        message: "Erro ao tentar retornar as áreas",
+        error: err,
+      });
     }
   }
 

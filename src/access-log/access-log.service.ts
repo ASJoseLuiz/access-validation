@@ -12,8 +12,8 @@ export class AccessLogService implements AccessLogInterface {
   constructor(private readonly prismaService: PrismaService) {}
 
   public async createAccessLog(
-    user_id: string | undefined,
-    area_id: string | undefined,
+    user_id: string,
+    area_id: string,
     access_status: Access_status
   ): Promise<void> {
     try {
@@ -27,8 +27,8 @@ export class AccessLogService implements AccessLogInterface {
 
       await this.prismaService.accessLog.create({
         data: {
-          user_id: user_id ?? "Unknown",
-          area_id: area_id ?? "Unknown",
+          user_id,
+          area_id,
           access_time: new Date(),
           access_status,
         },
@@ -42,9 +42,16 @@ export class AccessLogService implements AccessLogInterface {
   }
 
   public async getAccessLogView(user_id: string, area_id): Promise<AccessLog> {
-    return await this.prismaService.accessLog.findFirst({
-      where: { user_id, area_id },
-    });
+    try {
+      return await this.prismaService.accessLog.findFirst({
+        where: { user_id, area_id },
+      });
+    } catch (err) {
+      throw new InternalServerErrorException({
+        message: "Erro ao tentar retornar o log de acesso",
+        error: err,
+      });
+    }
   }
 
   public async updateAccessStatus(
