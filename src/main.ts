@@ -9,7 +9,6 @@ async function bootstrap() {
   const configService = app.get<ConfigService<EnvSchema, true>>(ConfigService);
   const port = configService.get<number>("PORT");
 
-  console.log(port);
   const logger = new Logger("Bootstrap");
   await app.listen(port, () => {
     logger.log(`🚀 Aplicação rodando na porta ${port}`);
