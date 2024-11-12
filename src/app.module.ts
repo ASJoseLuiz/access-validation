@@ -6,6 +6,7 @@ import { PrismaModule } from "./prisma/prisma.module";
 import { AccessLogModule } from "./access-log/access-log.module";
 import { AreaModule } from "./area/area.module";
 import { RouterModule } from "@nestjs/core";
+import { UserConfigModule } from "./user-config/user-config.module";
 
 @Module({
   imports: [
@@ -21,8 +22,14 @@ import { RouterModule } from "@nestjs/core";
         module: AuthModule,
       },
       {
-        path: "user", // pub create
+        path: "user", // pub
         module: UserModule,
+        children: [
+          {
+            path: "config", // adm
+            module: UserConfigModule,
+          },
+        ],
       },
       {
         path: "role", // adm
@@ -33,6 +40,7 @@ import { RouterModule } from "@nestjs/core";
         module: AreaModule,
       },
     ]),
+    UserConfigModule,
   ],
   controllers: [],
   providers: [],
