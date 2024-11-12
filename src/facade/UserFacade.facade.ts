@@ -1,10 +1,10 @@
 import { Injectable, BadRequestException } from "@nestjs/common";
-import { HealthProfessionalFactory } from "src/abstractFactory/factory/HealthProfessionalFactory";
-import { AdmProfessionalFactory } from "src/abstractFactory/factory/AdmProfessionalFactory";
-import { MaintenaceProfessionalFactory } from "src/abstractFactory/factory/MaintenaceProfessionalFactory";
-import { PatientFactory } from "src/abstractFactory/factory/PatientFactory";
-import { SecurityProfessionalFactory } from "src/abstractFactory/factory/SecurityProfessionalFactory";
-import { VisitorFactory } from "src/abstractFactory/factory/VisitorFactory";
+import { HealthProfessionalFactory } from "src/abstractFactory/UserRole/HealthProfessionalFactory";
+import { AdmProfessionalFactory } from "src/abstractFactory/UserRole/AdmProfessionalFactory";
+import { MaintenaceProfessionalFactory } from "src/abstractFactory/UserRole/MaintenaceProfessionalFactory";
+import { PatientFactory } from "src/abstractFactory/UserRole/PatientFactory";
+import { SecurityProfessionalFactory } from "src/abstractFactory/UserRole/SecurityProfessionalFactory";
+import { VisitorFactory } from "src/abstractFactory/UserRole/VisitorFactory";
 import { User } from "src/abstractFactory/Entities/User";
 import { UserService } from "src/user/user.service";
 

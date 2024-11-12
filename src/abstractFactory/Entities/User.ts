@@ -1,4 +1,3 @@
-
 import { Access_level } from "@prisma/client";
 
 export class User {

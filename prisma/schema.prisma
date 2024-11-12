@@ -46,7 +46,7 @@ model AccessLog {
 }
 
 enum Access_level {
-  L1 // Visitantes
+  L1 // Visitantes 
   L2 // Pacientes
   L3 // Prof de Manutenção
   L4 // Prof de Saúde/Laboratório

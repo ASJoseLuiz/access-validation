@@ -18,25 +18,25 @@ import { UserConfigModule } from "./user-config/user-config.module";
     AreaModule,
     RouterModule.register([
       {
-        path: "login", // pub
+        path: "login",
         module: AuthModule,
       },
       {
-        path: "user", // pub
+        path: "user",
         module: UserModule,
         children: [
           {
-            path: "config", // adm
+            path: "config",
             module: UserConfigModule,
           },
         ],
       },
       {
-        path: "role", // adm
+        path: "role",
         module: RoleModule,
       },
       {
-        path: "area", // pub/adm
+        path: "area",
         module: AreaModule,
       },
     ]),
