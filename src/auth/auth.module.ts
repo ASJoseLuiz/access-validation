@@ -3,7 +3,7 @@ import { AuthService } from "./auth.service";
 import { JwtModule, JwtService } from "@nestjs/jwt";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { EnvSchema } from "src/types/env-zod.type";
+import { EnvSchema } from "../types/env-zod";
 import { PrismaModule } from "src/prisma/prisma.module";
 import { AuthController } from "./auth.controller";
 import { AuthGuard } from "src/guards/authentication.guard";
